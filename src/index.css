@@ -1,13 +1,158 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.background-image {
+  background-image: linear-gradient(rgba(244,244,244, 0.3), rgba(244,244,244, 0.3)), url("./components/images/colorwheel.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+
+  z-index: -2;
+  position: fixed;
+  left: 0;
+  right: 0;
+  display: block;
+  -webkit-filter: blur(30px);
+  -moz-filter: blur(30px);
+  -o-filter: blur(30px);
+  -ms-filter: blur(30px);
+  filter: blur(30px);
+
+  height: 100%;
+  width: 100%;
+
+  -webkit-animation: rot 3s infinite;
+  -moz-animation:    rot 3s infinite;
+  -o-animation:      rot 3s infinite;
+  animation:         rot 3s infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@-webkit-keyframes rot {
+  0% {-webkit-transform: rotate(0deg) scale(2);}
+  100% {-webkit-transform: rotate(360deg) scale(2);}
+}
+@-moz-keyframes rot {
+  0% { -moz-transform: rotate(0deg) scale(2);}
+  100% {-moz-transform: rotate(360deg) scale(2);}
+}
+@-o-keyframes rot {
+  0% {-o-transform: rotate(0deg) scale(2);}
+  100% {-o-transform: rotate(360deg) scale(2);}
+}
+@keyframes rot {
+  0% {transform: rotate(0deg) scale(2); }
+  100% {transform: rotate(360deg) scale(2);}
+}
+
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  text-rendering: optimizeLegibility;
+  background-color: #f4f4f4;
+  box-sizing: border-box;
+}
+
+h1 {
+  color: #090c11;
+  font-weight: 900;
+  line-height: 1.125;
+  font-size: 96px;
+}
+
+h4 {
+  color: #090c11;
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+h5 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #090c11;
+  font-size: 19px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex .left {
+  width: 45%;
+}
+
+.flex .right {
+  width: 45%;
+}
+
+/*
+  Typography
+*/
+/* .main-header {
+  font-size: 6.2vw;
+}
+
+.paragraph {
+  font-size: 2.8vw;
+} */
+
+.work-left-column {
+  margin-top: -75px;
+}
+
+.work-right-column {
+  margin-top: 20px;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 40px;
+  padding-left: 40px;
+  max-width: 1200px;
+  z-index: 2;
+}
+
+@media screen and (max-width: 966px) {
+  .flex {
+    flex-wrap: wrap;
+  }
+
+  .flex .left {
+    width: 100%;
+  }
+
+  .flex .right {
+    width: 100%;
+  }
+
+  .container {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  h1 {
+    font-size: 64px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h4 {
+    font-size: 19px;
+  }
 }

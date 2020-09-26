@@ -1,0 +1,31 @@
+.work-card {
+  border-radius: 25px;
+  background-color: rgb(231, 231, 232);
+  padding: 40px;
+  background: linear-gradient(95deg, #f0f0f0 0%, rgba(255,255,255,1) 100%);
+  margin-top: 20px;
+  margin-bottom: 100px;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  /* transition: box-shadow 0.5s; */
+}
+
+/* .work-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+} */
+
+.work-card-description {
+  padding-top: 5px;
+}
+
+
+@media screen and (max-width: 966px) {
+  .work-card {
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  .work-left-column, .work-right-column {
+    margin-top: 0;
+  }
+}

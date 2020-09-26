@@ -1,0 +1,157 @@
+body, html {
+  font: normal normal 1.2vw/1.5vw 'Helvetica';
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex .left {
+  width: 50%;
+}
+
+.flex .right {
+  width: 40%;
+}
+
+.section {
+  margin-top: 6.25vw;
+}
+
+.work-left-column {
+  margin-top: -75px;
+}
+
+.work-right-column {
+  margin-top: 20px;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 40px;
+  padding-left: 40px;
+  max-width: 1200px;
+  z-index: 2;
+}
+
+.intro-section {
+  padding-top: 50px;
+  width: 93vw;
+  margin: 0 auto;
+}
+
+h1 {
+  font: 300 normal 6.2vw/6.2vw 'Helvetica';
+  letter-spacing: -2px;
+}
+
+h1.h1-title::first-letter {
+  margin-left: -9px;
+}
+
+h2 {
+  font: 300 normal 2.8vw/3.7vw 'Helvetica';
+}
+
+h3 {
+  font: 800 normal 1.8vw/2.2vw 'Helvetica';
+  margin-bottom: 2.5vw;
+  text-transform: up;
+}
+
+h4 {
+  font: 800 normal 1.4vw/1.8vw 'Helvetica';
+}
+
+span.description {
+  font: 300 normal 2vw/2.6vw 'Helvetica';
+}
+
+span, p {
+  font: 300 normal 1.4vw/1.8vw 'Helvetica';
+  display: block;
+}
+
+h1.work-left {
+  font: normal normal 7vw/7vw 'Helvetica';
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 7vw;
+}
+
+.sub-skill {
+  /* margin-left: 1.2vw; */
+}
+
+.work-intro{
+  margin-top: 2.25vw;
+}
+.work-intro h2{
+  font: 300 normal 2.8vw/3.7vw 'Helvetica';
+  margin-top: 6.25vw;
+}
+
+/* Work */
+.work {
+  /* margin-top: 2.25vw; */
+  margin-top: 6.25vw;
+}
+
+.sub-work {
+  border-bottom: 1px solid;
+  padding: 2.08vw 0;
+}
+
+.sub-work:first-child {
+  border-top: 1px solid;
+}
+
+.sub-work .right h3 {
+  font: 700 normal 1.5vw/1.6vw 'Helvetica';
+}
+
+.timeline h2 {
+  font-weight: 600;
+}
+
+/* Timeline card */
+.timeline-card-year {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 479px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h4 {
+    font-size: 19px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .about h3 {
+    font: 500 normal 5.4vw/5.8vw 'Helvetica';
+  }
+
+  .flex {
+    flex-wrap: wrap;
+  }
+
+  .flex .left {
+    width: 100%;
+  }
+
+  .flex .right {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 64px;
+  }
+}
