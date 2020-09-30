@@ -5,12 +5,6 @@ import { Work } from './work/Work'
 import { Link } from 'react-scroll';
 import { TestComponent } from './testcomponent/TestComponent';
 
-const Wrapper = styled.div`
-  color: #000;
-  background-attachment: fixed;
-  width: 100%;
-`
-
 function Navbar() {
   return (
     <nav id="nav">
@@ -61,7 +55,7 @@ function App() {
           <Work/>
         </Wrapper>
       </div> */}
-      <div>
+      <div id="scroll" data-scroll-container>
         <TestComponent />
       </div>
     </React.Fragment>

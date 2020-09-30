@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import './TestComponent.css'
+import locomotiveScroll from 'locomotive-scroll'
+// const locomotiveScroll = require('locomotive-scroll')
+
+import amz from '../images/amz.png'
+import rms from '../images/rms.png'
 
 const HorizontalSection = styled.section`
   position: relative;
@@ -113,6 +118,7 @@ const applyScrollListener = (ref: React.RefObject<HTMLDivElement>, setTranslateX
   window.addEventListener("scroll", () => {
     const offsetTop = -ref.current!.offsetTop;
     setTranslateX(offsetTop);
+    console.log(offsetTop)
   });
 };
 
@@ -137,8 +143,8 @@ export const HorizontalScroll: React.FC<HorizontalScrollProps> = (props: Horizon
   }, []);
 
   return (
-    <TallOuterContainer dynamicHeight={dynamicHeight!}>
-      <StickyInnerContainer ref={containerRef}>
+    <TallOuterContainer dynamicHeight={dynamicHeight!} id="outer-container">
+      <StickyInnerContainer ref={containerRef} data-scroll-sticky data-scroll-target="#outer-container">
         <HorizontalTranslateContainer translateX={translateX} ref={objectRef}>
           {props.children}
         </HorizontalTranslateContainer>
@@ -150,99 +156,133 @@ export const HorizontalScroll: React.FC<HorizontalScrollProps> = (props: Horizon
 
 export const TestComponent: React.FC<{}> = () => {
   const [timeString , setTimeString] = useState<string>(new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}))
+  const scrollRef = React.createRef()
 
   useEffect(() => {
+    const scroll = new locomotiveScroll({
+      el: document.getElementById('scroll'),
+      smooth: true
+    })
+
     let secTimer = setInterval( () => {
       setTimeString(new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}))
     }, 1000)
+
+    setTimeout(() => {
+      scroll.update()
+    }, 500)
+
 
     return () => clearInterval(secTimer)
   })
 
   return (
-    <div className="intro-section">
-      <div className="flex">
-        <div className="left">
-          <div>
-            <h1 className="h1-title">{timeString}</h1>
-            <span className="description">I am Harry, a software engineer studying Computer</span>
-            <span className="description"> Science at the University of California, Los Angeles</span>
-          </div>
-          <div>
-            <ul>
-              <li>Github</li>
-              <li>Linkedin</li>
-              <li>Email</li>
-            </ul>
-          </div>
-        </div>
-        <div className="right">
-          <div className="skill">
-            <h3>Skills</h3>
-            <div className="sub-skill">
-              <h4>Programming Languages</h4>
-              <p>JavaScript/TypeScript, Java, C, C++, C#, Python, HTML, CSS</p>
-            </div>
-            <div className="sub-skill">
-              <h4>Libraries &amp; Frameworks</h4>
-              <p>React, Angular, Node.js, Express, ASP.NET Core, MongoDB, AWS CDK, Jest, cypress.io</p>
-            </div>
-            <div className="sub-skill">
-              <h4>Tools &amp; Platforms</h4>
-              <p>Git, Docker, AWS</p>
-            </div>
-          </div>
-
-          <div className="interests section">
-            <h3>Interests</h3>
-            <span>Front-end</span>
-            <span>Back-end</span>
-            <span>System design</span>
-            <span>Web design</span>
-            <span>ML</span>
-            <span>(Anything software engineering related)</span>
-          </div>
-
-          {/* <div className="work-intro">
-            <h2>Work experience ↘</h2>
-          </div> */}
-        </div>
+    <div>
+      <div className="header" data-scroll-section>
+        <h1 className="h1-title time">{timeString}</h1>
+        <br/>
+        {/* <div className="marquee-container">
+          <h1 className="marquee-text">React Angular JavaScript TypeScript HTML CSS</h1>
+          <div className="mover-1"></div>
+          <div className="mover-2"></div>
+        </div> */}
       </div>
-
-      <div className="work">
-        <div className="flex sub-work">
+      <div className="intro-section" data-scroll-section>
+        <div className="flex">
           <div className="left">
-            <h1 className="work-left">
-              01
-            </h1>
-            <span>Summer 2020</span>
+            <div>
+              <span className="description">I am Harry, a software engineer studying Computer</span>
+              <span className="description"> Science at the University of California, Los Angeles</span>
+            </div>
+            <div>
+              <ul>
+                <li>Github</li>
+                <li>Linkedin</li>
+                <li>Email</li>
+              </ul>
+            </div>
           </div>
           <div className="right">
-            <h3>SDE Intern at Amazon</h3>
-          </div>
-        </div>
-        <div className="flex sub-work">
-          <div className="left">
-            <h1 className="work-left">
-              02
-            </h1>
-            <span>Summer 2019</span>
-          </div>
-          <div className="right">
-            <h3>Sofware Engineer Intern at Accelya (Formerly Revenue Management Systems, Inc.)</h3>
-          </div>
-        </div>
-      </div>
+            <div className="skill">
+              <h3>Skills</h3>
+              <div className="sub-skill">
+                <h4>Programming Languages</h4>
+                <p>JavaScript/TypeScript, Java, C, C++, C#, Python, HTML, CSS</p>
+              </div>
+              <div className="sub-skill">
+                <h4>Libraries &amp; Frameworks</h4>
+                <p>React, Angular, Node.js, Express, ASP.NET Core, MongoDB, AWS CDK, Jest, cypress.io</p>
+              </div>
+              <div className="sub-skill">
+                <h4>Tools &amp; Platforms</h4>
+                <p>Git, Docker, AWS</p>
+              </div>
+            </div>
 
-      <div className="timeline">
-        <HorizontalSection>
-          <HorizontalScroll>
-            <CardsContainer>
-              {SampleCards}
-            </CardsContainer>
-          </HorizontalScroll>
-        </HorizontalSection>
-      </div>
+            <div className="interests section">
+              <h3>Interests</h3>
+              <span>Front-end</span>
+              <span>Back-end</span>
+              <span>System design</span>
+              <span>Web design</span>
+              <span>ML</span>
+              <span>(Anything software engineering related)</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="work">
+          <div className="flex sub-work">
+            <div className="left">
+              <h1 className="work-left">
+                01
+              </h1>
+              <span>Summer 2020</span>
+            </div>
+            <div className="right">
+              <h3>SDE Intern at Amazon</h3>
+
+              <span>
+                Built a serverless web application hosted natively on AWS using React, Node.js, and Java.
+              </span>
+              <span>
+                Wrote unit and integration tests for React using Jest and Enzyme, and for lambda backend using JUnit and Mockito.
+              </span>
+            </div>
+          </div>
+          <div className="flex sub-work">
+            <div className="left">
+              <h1 className="work-left">
+                02
+              </h1>
+              <span>Summer 2019</span>
+            </div>
+            <div className="right">
+              <h3>Sofware Engineer Intern at Accelya (Formerly Revenue Management Systems, Inc.)</h3>
+
+              <span>
+                Streamlined company’s auditing process by building a full-stack timetracking web app with
+                JWT-secured REST API service using <strong>Angular</strong>, <strong>ASP.NET Core</strong>, <strong>MySQL</strong> and
+                deployed as <strong>Docker</strong> containers to AWS.
+              </span>
+              <span>
+                Developed a monitoring web app used by the Sales and Support team using <strong>Angular</strong>,
+                <strong>ASP.NET Core</strong>, <strong>SQL Server</strong> and hosted on Internet Information Services (IIS).
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* <div className="timeline" id="timeline">
+          <HorizontalSection>
+            <HorizontalScroll>
+              <CardsContainer>
+                {SampleCards}
+              </CardsContainer>
+            </HorizontalScroll>
+          </HorizontalSection>
+        </div> */}
+        </div>
     </div>
   )
 }
