@@ -181,11 +181,6 @@ export const TestComponent: React.FC<{}> = () => {
       <div className="header" data-scroll-section>
         <h1 className="h1-title time">{timeString}</h1>
         <br/>
-        {/* <div className="marquee-container">
-          <h1 className="marquee-text">React Angular JavaScript TypeScript HTML CSS</h1>
-          <div className="mover-1"></div>
-          <div className="mover-2"></div>
-        </div> */}
       </div>
       <div className="intro-section" data-scroll-section>
         <div className="flex">
